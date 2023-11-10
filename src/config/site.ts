@@ -5,7 +5,7 @@ export const siteConfig: SiteConfig = {
   description:
     "EduGPTs stands as an expansive repository of educational-focused GPTs, offering a comprehensive collection that encompasses the power of Generative Pre-trained Transformers. Designed to empower educational endeavors, EduGPTs serves as an invaluable resource for enhancing teaching, learning, research, and content generation.",
   url: "https://edugpts.vercel.app",
-  ogImage: "https://edugpts.vercel.app/og",
+  ogImage: "https://edugpts.vercel.app/og.png",
   creator: {
     name: "Rudrodip",
     url: "https://twitter.com/rds_agi",
