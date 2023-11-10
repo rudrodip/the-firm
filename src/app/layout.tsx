@@ -37,13 +37,33 @@ export const metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    images: [`${siteConfig.url}/og.png`],
     creator: siteConfig.creator.name,
+  },
+  discord: {
+    title: siteConfig.name,
+    type: "website",
+    url: siteConfig.url,
+    description: siteConfig.description,
+    image: {
+      url: siteConfig.ogImage,
+      width: 1200,
+      height: 630,
+      alt: siteConfig.name,
+    },
   },
   icons: {
     icon: "/favicon.ico",
