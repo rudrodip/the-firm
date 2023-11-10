@@ -9,9 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
+    "@nextui-org/react": "^2.2.8",
+    "@prisma/client": "5.5.2",
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
+    "he": "^1.2.0",
+    "lucide-react": "^0.292.0",
+    "next": "14.0.2",
+    "prisma": "^5.5.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.2"
+    "react-hook-form": "^7.48.2",
+    "sonner": "^1.2.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "typescript": "^5",

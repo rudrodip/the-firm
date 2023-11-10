@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 20.5 90.2% 48.2%;
+    --primary-foreground: 60 9.1% 97.8%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.btn-gradient {
+  background-image: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    hsl(var(--primary)) 140%
+  );
+  background-size: 100% 150%;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 0;
+  }
+}
+
+.underline-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.underline-animation::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease;
+}
+
+.underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+*::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  margin-block: 0.5rem;
+  border-radius: 100vw;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent));
+  border-radius: 25vw;
+}
+
+::-moz-selection {
+  color: hsl(var(--secondary));
+  background: hsl(var(--grad2));
+}
+
+::selection {
+  color: hsl(var(--secondary));
+  background: hsl(var(--primary));
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--shine-effect);
+  }
+}
+
+.shine-hover {
+  &::before {
+    left: -100%;
+    transition: var(--shine-transition);
+  }
+
+  &:hover {
+    box-shadow: var(--btn-shadow);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+.shine-anim {
+  &::before {
+    animation: shine 3s ease-in-out infinite;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    transition-property: left;
+  }
+  20%,
+  100% {
+    left: 100%;
+    transition-property: left;
+  }
+}
+
+.app {
+  @apply relative flex items-center flex-col w-full max-w-7xl mx-auto lg:mx-auto;
+}
+
+.head-text {
+  @apply my-5 text-5xl font-extrabold font-heading leading-[1.15] sm:text-7xl;
+}
+
+.orange-gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.desc {
+  @apply mt-5 max-w-2xl;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.bounce-emoji {
+  @apply animate-bounce;
+}
