@@ -7,6 +7,7 @@ import * as z from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { gptSchema as FormSchema } from "@/lib/validations/gpt";
 import { toast } from "sonner";
+import { env } from "@env.mjs";
 
 export default function SubmissionForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,7 @@ export default function SubmissionForm() {
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     setIsLoading(true);
-    fetch("/api/gpt", {
+    fetch(`${env.NEXT_PUBLIC_APP_URL}/api/gpt`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
