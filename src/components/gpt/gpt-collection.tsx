@@ -1,9 +1,14 @@
 import GptCard from "./gpt-card";
-import { PrismaClient } from "@prisma/client";
+import { GPT, PrismaClient } from "@prisma/client";
 
 export async function GptCollection() {
   const prisma = new PrismaClient();
-  const gpts = await prisma.gPT.findMany()
+  let gpts: GPT[] = []
+  try {
+    gpts = await prisma.gPT.findMany()
+  } catch (error) {
+    console.error(error)
+  }
   return (
     <>
       <section
