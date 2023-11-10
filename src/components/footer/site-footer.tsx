@@ -10,7 +10,7 @@ export default function SiteFooter() {
             <h1 className="font-heading text-2xl mb-3">
               {siteConfig.name}
             </h1>
-            <p className="leading-relaxed">{siteConfig.description}</p>
+            <p className="leading-relaxe desc">{siteConfig.description}</p>
           </div>
         </div>
         <div className="flex mx-auto text-center flex-wrap flex-col">

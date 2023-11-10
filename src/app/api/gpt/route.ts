@@ -1,6 +1,5 @@
 import { db } from "@/lib/db";
 import { gptSchema } from "@/lib/validations/gpt";
-import { querySchema } from "@/lib/validations/search";
 
 export async function POST(req: Request) {
   try {
@@ -39,18 +38,6 @@ export async function POST(req: Request) {
     }
 
     return new Response(JSON.stringify(user));
-  } catch (error) {
-    console.error("Error:", error);
-    return new Response("Internal Server Error", { status: 500 });
-  }
-}
-
-
-export async function GET(req: Request){
-  try {
-    let gpts = await db.gPT.findMany()
-
-    return new Response(JSON.stringify(gpts));
   } catch (error) {
     console.error("Error:", error);
     return new Response("Internal Server Error", { status: 500 });

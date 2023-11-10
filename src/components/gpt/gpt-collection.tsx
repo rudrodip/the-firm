@@ -1,11 +1,9 @@
-import { env } from "@env.mjs";
 import GptCard from "./gpt-card";
-import { gpt } from "@/types";
+import { PrismaClient } from "@prisma/client";
 
 export async function GptCollection() {
-  const gpts: gpt[] = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/gpt`).then(
-    (res) => res.json()
-  );
+  const prisma = new PrismaClient();
+  const gpts = await prisma.gPT.findMany()
   return (
     <>
       <section
