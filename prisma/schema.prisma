@@ -20,6 +20,12 @@ model GPT {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   url       String   @unique
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
+
+  name        String
+  description String
+  tag         String
+  imageUrl    String
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String
 }
