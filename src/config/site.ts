@@ -63,6 +63,6 @@ export const siteConfig: SiteConfig = {
   ],
   links: {
     twitter: "https://twitter.com/justmalhar",
-    github: "https://github.com/rudrodip",
+    github: "https://github.com/rudrodip/edugpts",
   },
 };
