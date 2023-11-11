@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
-import { gptSchema } from "@/lib/validations/gpt";
+import { gptSchemaBody } from "@/lib/validations/gpt";
 
 export async function POST(req: Request) {
   try {
     const json = await req.json()
-    const body = gptSchema.parse(json)
+    const body = gptSchemaBody.parse(json)
     let user = await db.user.findUnique({
       where: {
         email: body.email,
@@ -18,6 +18,10 @@ export async function POST(req: Request) {
           gpts: {
             create: {
               url: body.url,
+              name: body.name,
+              description: body.description,
+              imageUrl: body.imageUrl,
+              tag: body.tag,
             },
           },
         },
@@ -31,6 +35,10 @@ export async function POST(req: Request) {
           gpts: {
             create: {
               url: body.url,
+              name: body.name,
+              description: body.description,
+              imageUrl: body.imageUrl,
+              tag: body.tag,
             },
           },
         },
