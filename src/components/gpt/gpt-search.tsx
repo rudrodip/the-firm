@@ -18,6 +18,8 @@ export default function GptGrid({ gpts }: { gpts: GPT[] }) {
     setSearchQuery(e.target.value);
   };
 
+  const tags = Array.from(new Set(gpts.map((gpt) => gpt.tag)));
+
   const filteredGpts = gpts.filter((gpt) => {
     const isTagMatch = currentTag === "all" || currentTag === gpt.tag;
     const isSearchMatch =
@@ -46,17 +48,17 @@ export default function GptGrid({ gpts }: { gpts: GPT[] }) {
         >
           All
         </span>
-        {gpts.map((gpt, key) => {
+        {tags.map((tag, key) => {
           return (
             <span
               key={key}
               className={cn(
                 "px-2 py-1 border backdrop-blur-md rounded-md cursor-pointer",
-                currentTag == gpt.tag && "bg-primary"
+                currentTag == tag && "bg-primary"
               )}
-              onClick={() => handleTagClick(gpt.tag)}
+              onClick={() => handleTagClick(tag)}
             >
-              {gpt.tag}
+              {tag}
             </span>
           );
         })}
