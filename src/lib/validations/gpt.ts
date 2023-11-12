@@ -1,7 +1,9 @@
 import * as z from "zod"
 
 export const gptSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email({
+    message: "Please enter a valid email address",
+  }),
   url: z
     .string()
     .url()
@@ -12,7 +14,9 @@ export const gptSchema = z.object({
 });
 
 export const gptSchemaBody = z.object({
-  email: z.string().email(),
+  email: z.string().email({
+    message: "Please enter a valid email address",
+  }),
   url: z
     .string()
     .url()
