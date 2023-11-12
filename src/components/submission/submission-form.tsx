@@ -9,13 +9,24 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import { motion } from "framer-motion";
+
+const motionProps = {
+  initial: { scale: 0.6, opacity: 0 },
+  animate: { scale: 1, opacity: 1 },
+  transition: { duration: 0.6, delay: 0.1, type: "tween" },
+};
 
 export default function SubmissionForm() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
-    <section className="my-5 lg:my-12 mx-1 w-full flex flex-col items-center">
-      <Button onPress={onOpen} color="primary" size="lg">Submit your GPT</Button>
+    <motion.section className="my-5 lg:my-12 mx-1 w-full flex flex-col items-center">
+      <motion.div {...motionProps}>
+        <Button onPress={onOpen} color="primary" size="lg">
+          Submit your GPT
+        </Button>
+      </motion.div>
       <Modal size="2xl" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
@@ -30,6 +41,6 @@ export default function SubmissionForm() {
           )}
         </ModalContent>
       </Modal>
-    </section>
+    </motion.section>
   );
 }
