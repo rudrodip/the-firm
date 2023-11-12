@@ -2,7 +2,7 @@ import { Open_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/components/nextui-provider";
-import { Toaster } from 'sonner'
+import { Toaster } from "sonner";
 
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
@@ -87,7 +87,9 @@ export default async function RootLayout({
           fontHeading.variable
         )}
       >
-        <Toaster richColors position="top-center" theme="dark"/>
+        <div className="main"></div>
+        <div className="gradient" />
+        <Toaster richColors position="top-center" theme="dark" />
         <Providers>{children}</Providers>
       </body>
     </html>
