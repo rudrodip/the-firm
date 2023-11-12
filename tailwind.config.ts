@@ -65,6 +65,13 @@ module.exports = {
     require("tailwindcss-animate"),
     nextui({
       defaultTheme: "dark",
+      themes: {
+        dark: {
+          colors: {
+            background: "hsl(var(--background))",
+          },
+        },
+      },
     }),
   ],
 };

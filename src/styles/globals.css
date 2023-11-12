@@ -33,15 +33,73 @@
     --ring: 224.3 76.3% 48%;
 
     --radius: 0.5rem;
+
+    --grad1: 215, 98%, 61%;
+    --grad2: 125, 98%, 72%;
+    --grad3: 354, 98%, 61%;
+    --grad4: 256, 96%, 67%;
+    --grad5: 38, 60%, 74%;
+    --grad6: 222, 67%, 73%;
+    --grad7: 343, 68%, 79%;
+
+    --shine-degree: 120deg;
+    --shine-color: rgba(8, 212, 202, 0.3);
+    --shine-effect: linear-gradient(
+      var(--shine-degree),
+      transparent,
+      hsl(var(--primary)),
+      transparent
+    );
+    --shine-transition: all 0.5s ease-in-out;
   }
 }
 
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     margin: 0;
     padding: 0;
   }
+}
+
+.main {
+  z-index: -1000;
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
+}
+
+.main:after {
+  content: "";
+  background-image: url("/bg/grid.svg");
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.4;
+  filter: invert(var(--invert-value));
+}
+
+.gradient {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 20vw;
+  height: 80vh;
+  background-image: linear-gradient(to bottom, hsl(var(--primary)), transparent, transparent);
+  content: "";
+  filter: blur(80px) saturate(150%);
+  opacity: 0.3;
 }
 
 .btn-gradient {
