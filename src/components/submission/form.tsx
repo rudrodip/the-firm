@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Input,
@@ -20,7 +20,7 @@ import { categories } from "@/config/categories";
 
 export default function SubmissionFormModal( props: { onOpenChange: () => void }) {
   const [isLoading, setIsLoading] = useState(false);
-  const { handleSubmit, control, reset, formState, getValues } = useForm<
+  const { handleSubmit, control, reset, formState, getValues, trigger, watch } = useForm<
     z.infer<typeof FormSchema>
   >({
     resolver: zodResolver(FormSchema),
@@ -31,27 +31,36 @@ export default function SubmissionFormModal( props: { onOpenChange: () => void }
   const [imageUrl, setImageUrl] = useState<string>("");
   const [isValid, setIsValid] = useState<boolean>(false);
 
-  const validateGptUrl = () => {
-    setIsLoading(true);
-    fetch(`${env.NEXT_PUBLIC_APP_URL}/api/gpt-data`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: getValues("url") }),
-    })
-      .then(async (res) => {
-        if (res.ok) {
-          const data = await res.json();
-          setTitle(data.title);
-          setDescription(data.description);
-          setImageUrl(data.image);
-          setIsValid(true);
-        }
+  const validateGptUrl = async () => {
+    // Trigger validation for "email" and "url" fields
+    const emailValidationResult = await trigger("email");
+    const urlValidationResult = await trigger("url");
+  
+    if (emailValidationResult && urlValidationResult) {
+      // Both "email" and "url" are valid
+      setIsLoading(true);
+      fetch(`${env.NEXT_PUBLIC_APP_URL}/api/gpt-data`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: getValues("url") }),
       })
-      .catch((err) => {
-        toast.error("Error fetching GPT data! Check your URL and try again.");
-      })
-      .finally(() => setIsLoading(false));
-  };
+        .then(async (res) => {
+          if (res.ok) {
+            const data = await res.json();
+            setTitle(data.title);
+            setDescription(data.description);
+            setImageUrl(data.image);
+            setIsValid(true);
+          }
+        })
+        .catch((err) => {
+          toast.error("Error fetching GPT data! Check your URL and try again.");
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      toast.error("Please check your input.");
+    }
+  };  
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
     setIsLoading(true);
