@@ -72,7 +72,6 @@ export default function GptGrid({ gpts }: { gpts: GPT[] }) {
         className="w-full lg:w-1/2 my-4"
       >
         <Input
-          isRequired
           type="text"
           label="Search"
           className="w-full"
