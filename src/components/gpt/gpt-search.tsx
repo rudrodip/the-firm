@@ -64,7 +64,7 @@ export default function GptGrid({ gpts }: { gpts: GPT[] }) {
   return (
     <motion.section id="explore" className="flex flex-col my-24 items-center">
       <motion.h1 className="font-heading text-5xl text-center" {...motionProps}>
-        Explore GPTs
+        Explore The FIRM
       </motion.h1>
       <motion.div
         {...motionProps}
